@@ -1,0 +1,7 @@
+../Core/Src/cli.c:249:13:cmd_download	1
+../Core/Src/cli.c:244:13:cmd_clear	1
+../Core/Src/cli.c:238:13:cmd_reset	1
+../Core/Src/cli.c:184:13:cmd_help	6
+../Core/Src/cli.c:254:13:cmd_LED	1
+../Core/Src/cli.c:51:6:cli_Init	1
+../Core/Src/cli.c:311:6:cli_run	29

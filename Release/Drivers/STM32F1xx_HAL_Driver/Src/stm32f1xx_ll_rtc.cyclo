@@ -1,0 +1,12 @@
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:200:6:LL_RTC_StructInit	1
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:274:6:LL_RTC_TIME_StructInit	1
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:349:6:LL_RTC_ALARM_StructInit	1
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:364:13:LL_RTC_EnterInitMode	4
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:403:13:LL_RTC_ExitInitMode	4
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:221:13:LL_RTC_TIME_Init	3
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:296:13:LL_RTC_ALARM_Init	3
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:440:13:LL_RTC_TIME_SetCounter	2
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:466:13:LL_RTC_ALARM_SetCounter	2
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:493:13:LL_RTC_WaitForSynchro	4
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:95:13:LL_RTC_DeInit	3
+../Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_ll_rtc.c:156:13:LL_RTC_Init	4

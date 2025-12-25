@@ -1,0 +1,2 @@
+../Core/Src/reset.c:13:6:reset_Init	5
+../Core/Src/reset.c:51:10:reset_GetCount	1

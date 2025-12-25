@@ -1,0 +1,5 @@
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_bus.h:761:22:LL_APB2_GRP1_EnableClock	1
+../Core/Src/bsp.c:14:6:SystemClock_Config	9
+../Core/Src/bsp.c:87:6:Error_Handler	1
+../Core/Src/bsp.c:98:6:bsp_Init	1
+../Core/Src/bsp.c:165:6:delay	1

@@ -1,0 +1,3 @@
+../Core/Src/rtc.c:15:6:MX_RTC_Init	32	static
+../Core/Src/rtc.c:52:6:RTC_BKP_Set	0	static
+../Core/Src/rtc.c:57:10:RTC_BKP_Get	0	static

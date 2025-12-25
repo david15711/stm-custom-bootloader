@@ -1,0 +1,8 @@
+../Core/Src/uart.c:16:6:DMA1_Channel6_IRQHandler	1
+../Core/Src/uart.c:20:6:USART2_IRQHandler	2
+../Core/Src/uart.c:48:6:uart_Init	3
+../Core/Src/uart.c:101:9:uart_ReadChar	2
+../Core/Src/uart.c:108:10:uart_ReadString	1
+../Core/Src/uart.c:113:6:uart_WriteChar	2
+../Core/Src/uart.c:119:10:uart_WriteString	2
+../Core/Src/uart.c:128:6:uart_printf	2

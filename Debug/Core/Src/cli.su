@@ -1,0 +1,13 @@
+../Drivers/CMSIS/Include/core_cm3.h:1762:34:__NVIC_SystemReset	4	static,ignoring_inline_asm
+../Core/Src/cli.c:35:6:cli_Init	4	static
+../Core/Src/cli.c:40:13:cli_printf	144	static
+../Core/Src/cli.c:55:14:safe_atof	48	static
+../Core/Src/cli.c:122:14:trimleft	24	static
+../Core/Src/cli.c:141:14:trimright	24	static
+../Core/Src/cli.c:153:12:ArgsParsing	40	static
+../Core/Src/cli.c:168:12:cli_parse_args	32	static
+../Core/Src/cli.c:183:13:cmd_help	24	static
+../Core/Src/cli.c:233:13:cmd_reset	16	static
+../Core/Src/cli.c:239:13:cmd_download	16	static
+../Core/Src/cli.c:244:13:cli_process_command	72	static
+../Core/Src/cli.c:284:6:cli_run	16	static

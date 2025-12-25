@@ -1,0 +1,3 @@
+../Core/Src/boot.c:21:6:boot_Init	4
+../Core/Src/boot.c:43:6:boot_JumpToFw	2
+../Core/Src/boot.c:61:6:boot_CheckFw	1

@@ -1,0 +1,9 @@
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_pwr.h:164:22:LL_PWR_EnableBkUpAccess	4	static
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rcc.h:1327:22:LL_RCC_EnableRTC	4	static
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_bus.h:445:22:LL_APB1_GRP1_EnableClock	24	static
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h:276:22:LL_RTC_SetAsynchPrescaler	16	static
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h:551:22:LL_RTC_BKP_SetRegister	24	static
+../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h:611:26:LL_RTC_BKP_GetRegister	16	static
+../Core/Src/rtc.c:15:6:MX_RTC_Init	24	static
+../Core/Src/rtc.c:52:6:RTC_BKP_Set	16	static
+../Core/Src/rtc.c:57:10:RTC_BKP_Get	16	static

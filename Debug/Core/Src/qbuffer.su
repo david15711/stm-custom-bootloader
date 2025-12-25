@@ -1,0 +1,9 @@
+../Core/Src/qbuffer.c:10:6:qbufferCreate	24	static
+../Core/Src/qbuffer.c:26:10:qbufferWrite	40	static
+../Core/Src/qbuffer.c:60:10:qbufferRead	32	static
+../Core/Src/qbuffer.c:93:10:qbufferAvailable	16	static
+../Core/Src/qbuffer.c:98:10:qbufferSize	16	static
+../Core/Src/qbuffer.c:103:10:qbufferEmpty	16	static
+../Core/Src/qbuffer.c:108:10:qbufferFull	16	static
+../Core/Src/qbuffer.c:113:9:qbufferCheck	16	static
+../Core/Src/qbuffer.c:121:6:qbufferFlush	16	static

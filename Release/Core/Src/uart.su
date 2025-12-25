@@ -1,0 +1,8 @@
+../Core/Src/uart.c:16:6:DMA1_Channel6_IRQHandler	0	static
+../Core/Src/uart.c:20:6:USART2_IRQHandler	24	static
+../Core/Src/uart.c:48:6:uart_Init	72	static,ignoring_inline_asm
+../Core/Src/uart.c:101:9:uart_ReadChar	16	static
+../Core/Src/uart.c:108:10:uart_ReadString	0	static
+../Core/Src/uart.c:113:6:uart_WriteChar	0	static
+../Core/Src/uart.c:119:10:uart_WriteString	16	static
+../Core/Src/uart.c:128:6:uart_printf	144	static

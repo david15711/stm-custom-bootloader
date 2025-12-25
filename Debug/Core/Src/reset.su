@@ -1,0 +1,2 @@
+../Core/Src/reset.c:13:6:reset_Init	24	static,ignoring_inline_asm
+../Core/Src/reset.c:51:10:reset_GetCount	4	static
