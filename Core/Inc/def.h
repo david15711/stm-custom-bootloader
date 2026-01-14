@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <stdarg.h>
 
+//#define DEBUG
 #include "stm32f1xx_ll_gpio.h"
 
 #define B1_Pin LL_GPIO_PIN_13

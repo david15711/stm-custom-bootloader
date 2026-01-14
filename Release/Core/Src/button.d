@@ -21,7 +21,8 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usart.h \
  ../Core/Inc/stm32f1xx_it.h ../Core/Inc/main.h ../Core/Inc/dma.h \
  ../Core/Inc/iwdg.h ../Core/Inc/rtc.h ../Core/Inc/uart.h \
- ../Core/Inc/boot.h ../Core/Inc/cli.h ../Core/Inc/uart.h
+ ../Core/Inc/boot.h ../Core/Inc/cli.h ../Core/Inc/uart.h \
+ ../Core/Inc/reset.h
 ../Core/Inc/button.h:
 ../Core/Inc/hw_def.h:
 ../Core/Inc/def.h:
@@ -54,3 +55,4 @@ Core/Src/button.o: ../Core/Src/button.c ../Core/Inc/button.h \
 ../Core/Inc/boot.h:
 ../Core/Inc/cli.h:
 ../Core/Inc/uart.h:
+../Core/Inc/reset.h:

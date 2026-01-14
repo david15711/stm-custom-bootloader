@@ -9,6 +9,7 @@
 #include "dma.h"
 #include "qbuffer.h"
 
+bool isOpen[USART_MAX_CH];
 uint8_t DMA_buffer[USART_RX_BUF_LEN];
 qbuffer_t qbuffer[USART_MAX_CH];
 uint8_t second_buffer[USART_RX_BUF_LEN];
@@ -19,7 +20,9 @@ void DMA1_Channel6_IRQHandler(void)
 
 void USART2_IRQHandler(void) // IDLE Interrupt handle.
 {
+#ifdef DEBUG
   LL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin); // debug
+#endif
   if( (USART2->SR & USART_SR_IDLE) )
   {
     static uint32_t last_pos = 0;
@@ -45,87 +48,125 @@ void USART2_IRQHandler(void) // IDLE Interrupt handle.
  * @param None
  * @retval None
  */
-void uart_Init(void)
+bool uart_Init(int ch, int baud)
 {
-  /* USER CODE BEGIN USART2_Init 0 */
-  /* USER CODE END USART2_Init 0 */
+  bool ret = false;
+  switch( ch )
+  {
+    case 0:
+    {
+      LL_USART_InitTypeDef USART_InitStruct =
+      { 0 };
+      LL_GPIO_InitTypeDef GPIO_InitStruct =
+      { 0 };
+      /* Peripheral clock enable */
+      LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2);
+      LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
+      /**USART2 GPIO Configuration
+       PA2   ------> USART2_TX
+       PA3   ------> USART2_RX
+       */
+      GPIO_InitStruct.Pin = USART_TX_Pin;
+      GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+      GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
+      GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
+      LL_GPIO_Init(USART_TX_GPIO_Port, &GPIO_InitStruct);
 
-  LL_USART_InitTypeDef USART_InitStruct =
-  { 0 };
-  LL_GPIO_InitTypeDef GPIO_InitStruct =
-  { 0 };
-  /* Peripheral clock enable */
-  LL_APB1_GRP1_EnableClock(LL_APB1_GRP1_PERIPH_USART2);
-  LL_APB2_GRP1_EnableClock(LL_APB2_GRP1_PERIPH_GPIOA);
-  /**USART2 GPIO Configuration
-   PA2   ------> USART2_TX
-   PA3   ------> USART2_RX
-   */
-  GPIO_InitStruct.Pin = USART_TX_Pin;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-  GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-  GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-  LL_GPIO_Init(USART_TX_GPIO_Port, &GPIO_InitStruct);
+      GPIO_InitStruct.Pin = USART_RX_Pin;
+      GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
+      LL_GPIO_Init(USART_RX_GPIO_Port, &GPIO_InitStruct);
 
-  GPIO_InitStruct.Pin = USART_RX_Pin;
-  GPIO_InitStruct.Mode = LL_GPIO_MODE_ALTERNATE;
-  LL_GPIO_Init(USART_RX_GPIO_Port, &GPIO_InitStruct);
-
-  /* USART2 DMA Init */
-  /* USART2_RX Init */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-  /* USER CODE END USART2_Init 1 */
-  USART_InitStruct.BaudRate = 115200;
-  USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
-  USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
-  USART_InitStruct.Parity = LL_USART_PARITY_NONE;
-  USART_InitStruct.TransferDirection = LL_USART_DIRECTION_TX_RX;
-  USART_InitStruct.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
-  USART_InitStruct.OverSampling = LL_USART_OVERSAMPLING_16;
-  LL_USART_Init(USART2, &USART_InitStruct);
-  LL_USART_ConfigAsyncMode(USART2);
-  LL_USART_EnableDMAReq_RX(USART2);
-  LL_USART_EnableIT_IDLE(USART2);
+      USART_InitStruct.BaudRate = baud;
+      USART_InitStruct.DataWidth = LL_USART_DATAWIDTH_8B;
+      USART_InitStruct.StopBits = LL_USART_STOPBITS_1;
+      USART_InitStruct.Parity = LL_USART_PARITY_NONE;
+      USART_InitStruct.TransferDirection = LL_USART_DIRECTION_TX_RX;
+      USART_InitStruct.HardwareFlowControl = LL_USART_HWCONTROL_NONE;
+      USART_InitStruct.OverSampling = LL_USART_OVERSAMPLING_16;
+      LL_USART_Init(USART2, &USART_InitStruct);
+      LL_USART_ConfigAsyncMode(USART2);
 //LL_USART_EnableIT_RXNE(USART2); // debug
-  LL_USART_Enable(USART2);
-  /* USER CODE BEGIN USART2_Init 2 */
-  /* USER CODE END USART2_Init 2 */
+      LL_USART_Enable(USART2);
 
-  NVIC_SetPriority(USART2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0));
-  NVIC_EnableIRQ(USART2_IRQn);
+      NVIC_SetPriority(USART2_IRQn, NVIC_EncodePriority(NVIC_GetPriorityGrouping(), 0, 0));
+      NVIC_EnableIRQ(USART2_IRQn);
 
-  qbufferCreate(qbuffer, second_buffer, USART_RX_BUF_LEN);
+      LL_USART_EnableDMAReq_RX(USART2);
+      LL_USART_EnableIT_IDLE(USART2);
+
+      qbufferCreate(qbuffer, second_buffer, USART_RX_BUF_LEN);
+      isOpen[0] = true;
+      ret = true;
+    }
+      break;
+
+    case 1:
+    default:
+      break;
+  }
+  return ret;
 }
 
-uint8_t uart_ReadChar(void)
+bool uart_isOpen(int ch)
+{
+  return isOpen[ch];
+}
+
+uint8_t uart_ReadChar(int ch)
 {
   uint8_t c;
-  if( qbufferRead(qbuffer, &c, 1) ) return c;
-  else return 0;
-}
-
-uint32_t uart_ReadString(uint8_t* buf, uint32_t len)
-{
-  return qbufferRead(qbuffer, buf, len);
-}
-
-void uart_WriteChar(uint8_t c)
-{
-  while( !(USART2->SR & USART_SR_TXE) );
-  USART2->DR = c;
-}
-
-uint32_t uart_WriteString(uint8_t* buf, uint32_t len)
-{
-  for(int i = 0; i < len; i++)
+  switch( ch )
   {
-    uart_WriteChar(buf[i]);
+    case _DEF_UART2:
+      if( qbufferRead(qbuffer, &c, 1) ) return c;
+      else return 0;
+    default:
+      return 0;
   }
-  return len;
 }
 
-void uart_printf(const char* fmt, ...)
+uint32_t uart_ReadString(int ch, uint8_t* buf, uint32_t len)
+{
+  switch( ch )
+  {
+    case _DEF_UART2:
+      return qbufferRead(qbuffer, buf, len);
+    default:
+      return 0;
+  }
+}
+
+void uart_WriteChar(int ch, uint8_t c)
+{
+  switch( ch )
+  {
+    case 0:
+      while( !(USART2->SR & USART_SR_TXE) );
+      USART2->DR = c;
+      return;
+
+    default:
+      return;
+  }
+}
+
+uint32_t uart_WriteString(int ch, uint8_t* buf, uint32_t len)
+{
+  switch( ch )
+  {
+    case 0:
+      for(int i = 0; i < len; i++)
+      {
+        uart_WriteChar(_DEF_UART2, buf[i]);
+      }
+      return len;
+
+    default:
+      return 0;
+  }
+}
+
+void uart_printf(int ch, const char* fmt, ...)
 {
   char buf[128]; // 스택 절약을 위해 버퍼 사이즈 조절
   va_list args;
@@ -136,7 +177,7 @@ void uart_printf(const char* fmt, ...)
 
   if( len > 0 )
   {
-    uart_WriteString((uint8_t*)buf, (uint32_t)len);
+    uart_WriteString(ch, (uint8_t*)buf, (uint32_t)len);
   }
 }
 

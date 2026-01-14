@@ -3,3 +3,4 @@
 ../Core/Src/bsp.c:87:6:Error_Handler	1
 ../Core/Src/bsp.c:98:6:bsp_Init	1
 ../Core/Src/bsp.c:165:6:delay	1
+../Core/Src/bsp.c:170:10:get_milis	1

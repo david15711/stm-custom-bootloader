@@ -11,12 +11,13 @@
 #include "hw_def.h"
 
 #ifdef _USE_HW_USART
-void uart_Init(void);
-uint8_t uart_ReadChar(void);
-uint32_t uart_ReadString(uint8_t* buf, uint32_t len);
-void uart_WriteChar(uint8_t c);
-uint32_t uart_WriteString(uint8_t* buf, uint32_t len);
-void uart_printf(const char* fmt, ...);
+bool uart_Init(int ch, int baud);
+bool uart_isOpen(int ch);
+uint8_t uart_ReadChar(int ch);
+uint32_t uart_ReadString(int ch, uint8_t* buf, uint32_t len);
+void uart_WriteChar(int ch, uint8_t c);
+uint32_t uart_WriteString(int ch, uint8_t* buf, uint32_t len);
+void uart_printf(int ch, const char* fmt, ...);
 #endif
 
 #endif /* INC_UART_H_ */

@@ -67,14 +67,14 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
   MX_RTC_Init();
-//  boot_Init();
+  boot_Init();
   dma_Init();
-  uart_Init();
+  uart_Init(_DEF_UART2, 115200);
   cli_Init();
 //  MX_IWDG_Init();
+
   LL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-  uart_WriteChar(0x7F);
-  uart_printf("\x1B[37;40mHello World.\x1B[0\r\n");
+  uart_printf(_DEF_UART2, "Bootloader V0.5\r\n");
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -82,11 +82,13 @@ int main(void)
   while( 1 )
   {
 //    IWDG_Feed();
-
-    if( tick >= 10 )  //systick interrupt 1 ms tick.
+    if( !(get_milis() % 10) )  //systick interrupt 1 ms tick.
     {
+      if(!(get_milis() % 500) )
+      {
+        LL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
+      }
       cli_run();
-      tick %= 10;
     }
     /* USER CODE END WHILE */
     /* USER CODE BEGIN 3 */

@@ -21,7 +21,8 @@ Core/Src/cli.o: ../Core/Src/cli.c ../Core/Inc/cli.h ../Core/Inc/uart.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usart.h \
  ../Core/Inc/stm32f1xx_it.h ../Core/Inc/main.h ../Core/Inc/dma.h \
  ../Core/Inc/iwdg.h ../Core/Inc/rtc.h ../Core/Inc/uart.h \
- ../Core/Inc/boot.h ../Core/Inc/cli.h
+ ../Core/Inc/boot.h ../Core/Inc/cli.h ../Core/Inc/reset.h \
+ ../Core/Inc/boot.h
 ../Core/Inc/cli.h:
 ../Core/Inc/uart.h:
 ../Core/Inc/hw_def.h:
@@ -54,3 +55,5 @@ Core/Src/cli.o: ../Core/Src/cli.c ../Core/Inc/cli.h ../Core/Inc/uart.h \
 ../Core/Inc/uart.h:
 ../Core/Inc/boot.h:
 ../Core/Inc/cli.h:
+../Core/Inc/reset.h:
+../Core/Inc/boot.h:

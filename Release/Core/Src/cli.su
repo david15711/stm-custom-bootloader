@@ -1,7 +1,7 @@
-../Core/Src/cli.c:249:13:cmd_download	0	static
-../Core/Src/cli.c:244:13:cmd_clear	0	static
-../Core/Src/cli.c:238:13:cmd_reset	8	static,ignoring_inline_asm
-../Core/Src/cli.c:184:13:cmd_help	16	static
-../Core/Src/cli.c:254:13:cmd_LED	0	static
-../Core/Src/cli.c:51:6:cli_Init	0	static
-../Core/Src/cli.c:311:6:cli_run	72	static
+../Core/Src/cli.c:315:13:cmd_download	0	static
+../Core/Src/cli.c:310:13:cmd_clear	0	static
+../Core/Src/cli.c:304:13:cmd_reset	8	static,ignoring_inline_asm
+../Core/Src/cli.c:253:13:cmd_help	32	static
+../Core/Src/cli.c:320:13:cmd_boot	8	static
+../Core/Src/cli.c:62:6:cli_Init	0	static
+../Core/Src/cli.c:388:6:cli_run	72	static

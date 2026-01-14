@@ -1,8 +1,9 @@
-../Core/Src/uart.c:16:6:DMA1_Channel6_IRQHandler	1
-../Core/Src/uart.c:20:6:USART2_IRQHandler	2
-../Core/Src/uart.c:48:6:uart_Init	3
-../Core/Src/uart.c:101:9:uart_ReadChar	2
-../Core/Src/uart.c:108:10:uart_ReadString	1
-../Core/Src/uart.c:113:6:uart_WriteChar	2
-../Core/Src/uart.c:119:10:uart_WriteString	2
-../Core/Src/uart.c:128:6:uart_printf	2
+../Core/Src/uart.c:17:6:DMA1_Channel6_IRQHandler	1
+../Core/Src/uart.c:21:6:USART2_IRQHandler	2
+../Core/Src/uart.c:51:6:uart_Init	4
+../Core/Src/uart.c:110:6:uart_isOpen	1
+../Core/Src/uart.c:115:9:uart_ReadChar	3
+../Core/Src/uart.c:128:10:uart_ReadString	2
+../Core/Src/uart.c:139:6:uart_WriteChar	3
+../Core/Src/uart.c:153:10:uart_WriteString	4
+../Core/Src/uart.c:169:6:uart_printf	2

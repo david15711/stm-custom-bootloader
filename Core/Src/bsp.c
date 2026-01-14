@@ -166,3 +166,8 @@ void delay(uint32_t ms)
 {
   LL_mDelay(ms);
 }
+
+uint32_t get_milis(void)
+{
+  return tick;
+}

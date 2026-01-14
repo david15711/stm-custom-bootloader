@@ -1,4 +1,5 @@
-Core/Src/bsp.o: ../Core/Src/bsp.c ../Core/Inc/bsp.h ../Core/Inc/def.h \
+Core/Src/reset.o: ../Core/Src/reset.c ../Core/Inc/reset.h \
+ ../Core/Inc/rtc.h ../Core/Inc/hw_def.h ../Core/Inc/def.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_gpio.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h \
@@ -7,7 +8,7 @@ Core/Src/bsp.o: ../Core/Src/bsp.c ../Core/Inc/bsp.h ../Core/Inc/def.h \
  ../Drivers/CMSIS/Include/cmsis_compiler.h \
  ../Drivers/CMSIS/Include/cmsis_gcc.h \
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h \
- ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_pwr.h \
+ ../Core/Inc/bsp.h ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_dma.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_iwdg.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rcc.h \
@@ -18,11 +19,12 @@ Core/Src/bsp.o: ../Core/Src/bsp.c ../Core/Inc/bsp.h ../Core/Inc/def.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_utils.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_rtc.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usart.h \
- ../Core/Inc/stm32f1xx_it.h ../Core/Inc/main.h ../Core/Inc/hw_def.h \
- ../Core/Inc/bsp.h ../Core/Inc/dma.h ../Core/Inc/iwdg.h ../Core/Inc/rtc.h \
- ../Core/Inc/uart.h ../Core/Inc/boot.h ../Core/Inc/cli.h \
- ../Core/Inc/uart.h ../Core/Inc/reset.h
-../Core/Inc/bsp.h:
+ ../Core/Inc/stm32f1xx_it.h ../Core/Inc/main.h ../Core/Inc/dma.h \
+ ../Core/Inc/iwdg.h ../Core/Inc/uart.h ../Core/Inc/boot.h \
+ ../Core/Inc/cli.h ../Core/Inc/uart.h ../Core/Inc/reset.h
+../Core/Inc/reset.h:
+../Core/Inc/rtc.h:
+../Core/Inc/hw_def.h:
 ../Core/Inc/def.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_gpio.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f1xx.h:
@@ -32,6 +34,7 @@ Core/Src/bsp.o: ../Core/Src/bsp.c ../Core/Inc/bsp.h ../Core/Inc/def.h \
 ../Drivers/CMSIS/Include/cmsis_compiler.h:
 ../Drivers/CMSIS/Include/cmsis_gcc.h:
 ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/system_stm32f1xx.h:
+../Core/Inc/bsp.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_pwr.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_dma.h:
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_iwdg.h:
@@ -45,11 +48,8 @@ Core/Src/bsp.o: ../Core/Src/bsp.c ../Core/Inc/bsp.h ../Core/Inc/def.h \
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_ll_usart.h:
 ../Core/Inc/stm32f1xx_it.h:
 ../Core/Inc/main.h:
-../Core/Inc/hw_def.h:
-../Core/Inc/bsp.h:
 ../Core/Inc/dma.h:
 ../Core/Inc/iwdg.h:
-../Core/Inc/rtc.h:
 ../Core/Inc/uart.h:
 ../Core/Inc/boot.h:
 ../Core/Inc/cli.h:

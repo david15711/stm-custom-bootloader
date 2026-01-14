@@ -38,6 +38,7 @@
 #include "uart.h"
 #include "boot.h"
 #include "cli.h"
+#include "reset.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/

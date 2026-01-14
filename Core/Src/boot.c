@@ -7,55 +7,57 @@
  */
 
 #include "boot.h"
+#include "reset.h"
 
 /***
  * TODO: add
  *    boot_ShowVersion()
  *    boot_ShowBoardVersion()
- *    boot_EraseFlashFw
- *    boot_WriteFlashFw
+ *    boot_EraseFlashFw //
+ *    boot_WriteFlashFw // ymodem will use.
  */
-
-static uint32_t reset_count = 0;
 
 bool boot_Init(void)
 {
-  // 만약 Reset 핀이 눌렸다면
-  if( RCC->CSR == RCC_CSR_PINRSTF )
+  if( reset_Init() )
   {
-    RTC_BKP_Set(1, RTC_BKP_Get(1) + 1);
-    delay(500);
-    reset_count = RTC_BKP_Get(1);
-  }
-  RTC_BKP_Set(1, 0);
-
-  if( reset_count != 2 )
-  {
-    if ( boot_CheckFw() )
+    if( boot_CheckFw() )
     {
       boot_JumpToFw();
     }
   }
-
   return true;
 }
 
+//__attribute__((optimize("O0")))
 void boot_JumpToFw(void)
 {
-  void (**jump_func)(void) = (void (**)(void))(FLASH_FW_ADDR_START + 4);
+  uint32_t stack_pointer = *(__IO uint32_t*)FLASH_FW_ADDR_START;
+  uint32_t jump_address = *(__IO uint32_t*)(FLASH_FW_ADDR_START + 4);
+//  void (*app_jump)(void) = (void (*)(void))jump_address;
 
   LL_RCC_DeInit();
+  SysTick->CTRL = 0;
+  SysTick->LOAD = 0;
+  SysTick->VAL = 0;
 
-  for (int i=0; i<8; i++)
+  for(int i = 0; i < 8; i++)
   {
     NVIC->ICER[i] = 0xFFFFFFFF;
+    NVIC->ICPR[i] = 0xFFFFFFFF;
     __DSB();
     __ISB();
   }
-  SysTick->CTRL = 0;
 
-  __set_MSP(0x8004000);
-  (*jump_func)();
+//  __set_MSP(stack_pointer);
+//  app_jump();
+  __asm volatile (
+      "msr msp, %0 \n"  // (1) 스택 포인터 설정
+      "bx %1       \n"// (2) 해당 주소로 점프
+      :
+      : "r" (stack_pointer), "r" (jump_address)// (3) 입력 파라미터
+      : "memory"// (4) 클로버(Clobber) 목록
+  );
 }
 
 bool boot_CheckFw(void)
@@ -64,4 +66,3 @@ bool boot_CheckFw(void)
 
   return ((uint32_t)(*jump_func) != 0xFFFFFFFF);
 }
-

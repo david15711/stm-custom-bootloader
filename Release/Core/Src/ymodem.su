@@ -1,0 +1,7 @@
+../Core/Src/ymodem.c:54:6:ymodem_Init	0	static
+../Core/Src/ymodem.c:65:6:ymodem_Open	16	static
+../Core/Src/ymodem.c:84:6:ymodem_Putch	0	static
+../Core/Src/ymodem.c:93:6:ymodem_GetFileInfo	16	static
+../Core/Src/ymodem.c:132:6:ymodem_Receive	16	static
+../Core/Src/ymodem.c:360:10:crc_update	0	static
+../Core/Src/ymodem.c:405:6:cmd_ymodem	1232	static

@@ -1,7 +1,7 @@
-../Core/Src/cli.c:249:13:cmd_download	1
-../Core/Src/cli.c:244:13:cmd_clear	1
-../Core/Src/cli.c:238:13:cmd_reset	1
-../Core/Src/cli.c:184:13:cmd_help	6
-../Core/Src/cli.c:254:13:cmd_LED	1
-../Core/Src/cli.c:51:6:cli_Init	1
-../Core/Src/cli.c:311:6:cli_run	29
+../Core/Src/cli.c:315:13:cmd_download	1
+../Core/Src/cli.c:310:13:cmd_clear	1
+../Core/Src/cli.c:304:13:cmd_reset	1
+../Core/Src/cli.c:253:13:cmd_help	6
+../Core/Src/cli.c:320:13:cmd_boot	2
+../Core/Src/cli.c:62:6:cli_Init	1
+../Core/Src/cli.c:388:6:cli_run	25

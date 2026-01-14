@@ -37,5 +37,6 @@
 
 void bsp_Init(void);
 void delay(uint32_t ms);
+uint32_t get_milis(void);
 
 #endif /* INC_BSP_H_ */

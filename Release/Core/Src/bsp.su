@@ -3,3 +3,4 @@
 ../Core/Src/bsp.c:87:6:Error_Handler	0	static,ignoring_inline_asm
 ../Core/Src/bsp.c:98:6:bsp_Init	56	static,ignoring_inline_asm
 ../Core/Src/bsp.c:165:6:delay	0	static
+../Core/Src/bsp.c:170:10:get_milis	0	static
